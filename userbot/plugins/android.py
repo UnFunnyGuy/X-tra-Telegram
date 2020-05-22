@@ -17,23 +17,21 @@ DEVICES_DATA = 'https://raw.githubusercontent.com/androidtrackers/' \
                'certified-android-devices/master/devices.json'
 
 
-@register(outgoing=True, pattern="^.magisk$")
+@register(outgoing=True, pattern="^.mad$")
 async def magisk(request):
-    """ magisk latest releases """
-    magisk_dict = {
-        "Stable":
-        "https://raw.githubusercontent.com/topjohnwu/magisk_files/master/stable.json",
-        "Beta":
-        "https://raw.githubusercontent.com/topjohnwu/magisk_files/master/beta.json",
-        "Canary (Release)":
-        "https://raw.githubusercontent.com/topjohnwu/magisk_files/canary/release.json",
-        "Canary (Debug)":
-        "https://raw.githubusercontent.com/topjohnwu/magisk_files/canary/debug.json"
+    """MADNESS SUBSTRATUM"""
+    madness_dict = {
+        "Playstore":
+        "https://play.google.com/store/apps/details?id=com.unfunnyguy.subs",
+        "Guide":
+        "https://telegra.ph/MADNESS--SUBSTRATUM--COLOUR-PICKING-GUIDE-04-29",
+        "Channel":
+        "hyyps://t.me/madnesssubmod"
     }
-    releases = 'Latest Magisk Releases:\n'
-    for name, release_url in magisk_dict.items():
-        data = get(release_url).json()
-        releases += f'{name}: [ZIP v{data["magisk"]["version"]}]({data["magisk"]["link"]}) | ' \
+    releases = 'MADNESS SUBSTRATUM:\n'
+    for name, release_url in madness_dict.items():
+        data = get(release_url)
+        releases += f'{name}: [ZIP]["version"]}]({data["magisk"]["link"]}) | ' \
                     f'[APK v{data["app"]["version"]}]({data["app"]["link"]}) | ' \
                     f'[Uninstaller]({data["uninstaller"]["link"]})\n'
     await request.edit(releases)
